@@ -10,40 +10,36 @@
 
 module.exports = function(grunt) {
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+  var fs = require('fs'),
+    exec = require('child_process').exec,
+    filesLength = 0,
+    filesComplete = 0;
 
   grunt.registerMultiTask('prettysass', 'Your task description goes here.', function() {
-    // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options({
-      punctuation: '.',
-      separator: ', '
-    });
+
+    var options = this.options({});
+    var files = grunt.file.expand(options.sass);
+    var done = this.async();
 
     // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
+    files.forEach(function(file, i) {
+
+      var dirtySass = file.read,
+          command = 'sass-convert --from scss --to scss --indent t --in-place ' + file;
+
+      grunt.log.writeln('prettifying: '.cyan + file);
+
+      exec(command, function ( error, stdout, stderr ) {
+        if ( error !== null ) {
+          grunt.log.error( file + ': ' + error );
+          done( false );
         } else {
-          return true;
+          if (options.alphabetize) {
+            //alphabetize(filepath);
+          }
         }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
+      });
 
-      // Handle options.
-      src += options.punctuation;
-
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
     });
   });
 
