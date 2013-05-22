@@ -1,4 +1,4 @@
-# grunt-pretty-sass
+# grunt-prettysass
 
 > Beautify your SASS files.
 
@@ -8,23 +8,23 @@ This plugin requires Grunt `~0.4.1`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-pretty-sass --save-dev
+npm install grunt-prettysass --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-pretty-sass');
+grunt.loadNpmTasks('grunt-prettysass');
 ```
 
-## The "pretty_sass" task
+## The "prettysass" task
 
 ### Overview
-In your project's Gruntfile, add a section named `pretty_sass` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `prettysass` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  pretty_sass: {
+  prettysass: {
     options: {
       // Task-specific options go here.
     },
@@ -37,17 +37,17 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+#### options.alphabetize
+Type: `Boolean`
+Default value: `false`
 
-A string value that is used to do something with whatever.
+Sort SASS properties alphabetically.
 
 #### options.punctuation
-Type: `String`
-Default value: `'.'`
+Type: `mixed`
+Default value: `2`
 
-A string value that is used to do something else with whatever else.
+How dmany spaces to use for each level of indentation. Defaults to 2. "t" means use hard tabs.
 
 ### Usage Examples
 
@@ -56,7 +56,7 @@ In this example, the default options are used to do something with whatever. So 
 
 ```js
 grunt.initConfig({
-  pretty_sass: {
+  prettysass: {
     options: {},
     files: {
       'dest/default_options': ['src/testing', 'src/123'],
@@ -70,7 +70,7 @@ In this example, custom options are used to do something else with whatever else
 
 ```js
 grunt.initConfig({
-  pretty_sass: {
+  prettysass: {
     options: {
       separator: ': ',
       punctuation: ' !!!',

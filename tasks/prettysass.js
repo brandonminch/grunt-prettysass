@@ -144,6 +144,7 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('prettysass', 'Your task description goes here.', function() {
 
     var options = this.options({
+      'alphabetize': false,
       'indent': '2'
     });
     var files = grunt.file.expand(options.sass);
