@@ -33,15 +33,25 @@ module.exports = function(grunt) {
           selectorsMap = [],
           outputString = '',
           combination = '',
+          commentedLine = '',
+          isMultiLineComment = false,
           flattened;
 
         lines.forEach(function (line) {
           var selectorStart = /\{/g.test(line),
             selectorEnd = /\}/g.test(line),
-            combined = /,$/.test(line);
+            combined = /,$/.test(line),
+            comment = /^\s*(\/)/.test(line);
 
           if (combined) {
             combination += line + '\n';
+          } else if (comment || isMultiLineComment) {
+            commentedLine += line + '\n';
+            if (/\/\*/.test(line) && !/\*\//.test(line)) {
+              isMultiLineComment = true;
+            } else if (/\*\//.test(line)) {
+              isMultiLineComment = false;
+            }
           } else if (selectorStart) {
             if (!isSelector) {
               isSelector = true;
@@ -52,6 +62,11 @@ module.exports = function(grunt) {
             if (combination) {
               line = combination + line;
               combination = '';
+            }
+
+            if (commentedLine) {
+               line = commentedLine + line;
+               commentedLine = '';
             }
 
             selectorIndex = selectors.length;
@@ -68,12 +83,24 @@ module.exports = function(grunt) {
             } else {
               isSelector = false;
             }
+            if (commentedLine) {
+               line = commentedLine + line;
+               commentedLine = '';
+            }
             selectorsMap.pop();
             output[outputIndex] = line;
             outputIndex++;
           } else if (isSelector) {
+            if (commentedLine) {
+               line = commentedLine + line;
+               commentedLine = '';
+            }
             selectors[_.last(selectorsMap)].push(line);
           } else {
+            if (commentedLine) {
+               line = commentedLine + line;
+               commentedLine = '';
+            }
             output[outputIndex] = line;
             outputIndex++;
           }
@@ -82,6 +109,15 @@ module.exports = function(grunt) {
         _.each(selectors, function(selector) {
           if (_.isArray(selector)) {
             selectors[selector] = _.sortBy(selector, function (line) {
+              // If commented line, find property to sort by.
+              if (/^\s*(\/)/.test(line)) {
+                var property = line.match(/^(?!\s*(\/))./gm);
+                if (property.length) {
+                  return property[0];
+                } else {
+                  return line;
+                }
+              }
               return line;
             });
             selector.sort();
