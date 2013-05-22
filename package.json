@@ -1,6 +1,6 @@
 {
   "name": "grunt-prettysass",
-  "description": "Beautify your SASS files.",
+  "description": "Prettify your SASS source files.",
   "version": "0.1.0",
   "homepage": "https://github.com/brandonminch/grunt-prettysass",
   "author": {
@@ -37,6 +37,9 @@
     "grunt": "~0.4.0"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "sass",
+    "scss",
+    "alphabetize"
   ]
 }

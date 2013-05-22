@@ -1,6 +1,6 @@
 # grunt-prettysass
 
-> Prettify your SASS files.
+> Prettify your SASS source files.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`

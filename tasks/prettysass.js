@@ -141,7 +141,7 @@ module.exports = function(grunt) {
       });
   }
 
-  grunt.registerMultiTask('prettysass', 'Your task description goes here.', function() {
+  grunt.registerMultiTask('prettysass', 'Prettify your SASS source files.', function() {
 
     var options = this.options({
       'sassDir': '',
