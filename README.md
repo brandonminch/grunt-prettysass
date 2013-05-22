@@ -1,6 +1,6 @@
 # grunt-prettysass
 
-> Beautify your SASS files.
+> Prettify your SASS files.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
@@ -37,13 +37,19 @@ grunt.initConfig({
 
 ### Options
 
+#### options.sassDir
+Type: `String`
+Default value: `''`
+
+Directory containing SASS files to prettify. All .scss files within the specified directory and its subdirectories will be prettified. Defaults to project's root directory.
+
 #### options.alphabetize
 Type: `Boolean`
 Default value: `false`
 
 Sort SASS properties alphabetically.
 
-#### options.punctuation
+#### options.indent
 Type: `mixed`
 Default value: `2`
 

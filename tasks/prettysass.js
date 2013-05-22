@@ -17,7 +17,7 @@ module.exports = function(grunt) {
     filesComplete = 0;
 
     function alphabetize(file, done) {
-      grunt.log.writeln('alphabetizing: '.yellow + file);
+      grunt.log.writeln('alphabetizing: '.green + file);
       fs.readFile(file, function(err, data) {
         if (err) {
           throw err;
@@ -144,11 +144,17 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('prettysass', 'Your task description goes here.', function() {
 
     var options = this.options({
+      'sassDir': '',
       'alphabetize': false,
       'indent': '2'
     });
-    var files = grunt.file.expand(options.sass);
+    var sassDir = options.sassDir ? options.sassDir + '/**/*.scss' : '**/*.scss';
+    var files = grunt.file.expand(sassDir);
     var done = this.async();
+
+    if (!files.length) {
+      grunt.warn('No scss files were found in directory');
+    }
 
     // Iterate over all specified file groups.
     files.forEach(function(file, i) {
