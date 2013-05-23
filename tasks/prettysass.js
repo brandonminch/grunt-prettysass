@@ -130,6 +130,8 @@ module.exports = function(grunt) {
           outputString += section + '\n';
         });
 
+        outputString = _.trim(outputString);
+
         fs.writeFile(file, outputString, 'utf8', function() {
           if (filesComplete ===  filesLength - 1) {
             done( true );
@@ -154,13 +156,14 @@ module.exports = function(grunt) {
 
     if (!files.length) {
       grunt.warn('No scss files were found in directory');
+    } else {
+      filesLength = files.length;
     }
 
     // Iterate over all specified file groups.
     files.forEach(function(file, i) {
 
-      var dirtySass = file.read,
-          command = 'sass-convert --from scss --to scss' + 
+      var command = 'sass-convert --from scss --to scss' + 
                     ' --indent ' + options.indent + 
                     ' --in-place ' + file;
 
@@ -173,6 +176,12 @@ module.exports = function(grunt) {
         } else {
           if (options.alphabetize) {
             alphabetize(file, done);
+          } else {
+            if (filesComplete ===  filesLength - 1) {
+              done( true );
+            } else {
+              filesComplete++;
+            }
           }
         }
       });

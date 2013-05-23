@@ -23,28 +23,32 @@ module.exports = function(grunt) {
       },
     },
 
+    setup: {
+      test: {
+        files: {
+          'tmp1/default.scss': 'test/fixtures/test.scss',
+          'tmp2/alphabetize.scss': 'test/fixtures/test.scss'
+        }
+      }
+    },
+
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp'],
+      tests: ['tmp1', 'tmp2'],
     },
 
     // Configuration to be run (and then tested).
     prettysass: {
       default_options: {
         options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+          sassDir: 'tmp1'
+        }
       },
-      custom_options: {
+      alphabetize: {
         options: {
-          separator: ': ',
-          punctuation: ' !!!',
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+          sassDir: 'tmp2',
+          alphabetize: true
+        }
       },
     },
 
@@ -65,7 +69,7 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'prettysass', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'setup', 'prettysass', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);

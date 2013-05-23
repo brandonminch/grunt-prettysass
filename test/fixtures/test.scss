@@ -1,0 +1,23 @@
+.class-test {
+    border-left: 1px solid black;
+
+    height: 100%;
+    border-top: 1px solid red;
+    @include opacity(0);
+
+    // Comment here.
+    #nested-id {
+        &.nested-class-a {
+            position: relative;
+            margin: 20em;
+            border: 1px solid yellow;
+        }
+            z-index: 1;
+            position: relative;
+    }
+      /* #commented-id {
+        .nested-style {
+            width: 100%;
+        }
+      } */
+}

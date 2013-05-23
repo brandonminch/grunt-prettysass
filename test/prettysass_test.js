@@ -30,19 +30,19 @@ exports.prettysass = {
   default_options: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+    var actual = grunt.file.read('tmp1/default.scss');
+    var expected = grunt.file.read('test/expected/default.scss');
+    test.equal(actual, expected, 'default sass formatting');
 
     test.done();
   },
-  custom_options: function(test) {
+  alphabetize: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/custom_options');
-    var expected = grunt.file.read('test/expected/custom_options');
-    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
+    var actual = grunt.file.read('tmp2/alphabetize.scss');
+    var expected = grunt.file.read('test/expected/alphabetize.scss');
+    test.equal(actual, expected, 'alphabetized sass formating');
 
     test.done();
-  },
+  }
 };
