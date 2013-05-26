@@ -40,15 +40,13 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     prettysass: {
       default_options: {
-        options: {
-          sassDir: 'tmp1'
-        }
+        src: ['tmp1/**/*.scss']
       },
       alphabetize: {
         options: {
-          sassDir: 'tmp2',
           alphabetize: true
-        }
+        },
+        src: ['tmp2/**/*.scss']
       },
     },
 
