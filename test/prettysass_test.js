@@ -30,7 +30,7 @@ exports.prettysass = {
   default_options: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp1/default.scss');
+    var actual = grunt.file.read('tmp/default.scss');
     var expected = grunt.file.read('test/expected/default.scss');
     test.equal(actual, expected, 'default sass formatting');
 
@@ -39,7 +39,7 @@ exports.prettysass = {
   alphabetize: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp2/alphabetize.scss');
+    var actual = grunt.file.read('tmp/alphabetize.scss');
     var expected = grunt.file.read('test/expected/alphabetize.scss');
     test.equal(actual, expected, 'alphabetized sass formating');
 

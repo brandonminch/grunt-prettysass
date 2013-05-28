@@ -26,27 +26,27 @@ module.exports = function(grunt) {
     setup: {
       test: {
         files: {
-          'tmp1/default.scss': 'test/fixtures/test.scss',
-          'tmp2/alphabetize.scss': 'test/fixtures/test.scss'
+          'tmp/default.scss': 'test/fixtures/test.scss',
+          'tmp/alphabetize.scss': 'test/fixtures/test.scss'
         }
       }
     },
 
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp1', 'tmp2'],
+      tests: ['tmp'],
     },
 
     // Configuration to be run (and then tested).
     prettysass: {
       default_options: {
-        src: ['tmp1/**/*.scss']
+        src: ['tmp/default.scss']
       },
       alphabetize: {
         options: {
           alphabetize: true
         },
-        src: ['tmp2/**/*.scss']
+        src: ['tmp/alphabetize.scss']
       },
     },
 

@@ -146,7 +146,6 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('prettysass', 'Prettify your SASS source files.', function() {
 
     var options = this.options({
-      'sassDir': '',
       'alphabetize': false,
       'indent': '2'
     });

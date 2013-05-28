@@ -1,3 +1,13 @@
+@media screen {
+  // Base Rules
+  @import "base/foo";
+  @import "base/bar";
+  // Layouts
+  // Section Modules
+  @import "modules/foo";
+  @import "modules/bar";
+}
+
 .class-test {
   border-left: 1px solid black;
   height: 100%;
