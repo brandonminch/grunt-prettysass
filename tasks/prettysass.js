@@ -149,7 +149,7 @@ module.exports = function(grunt) {
       'alphabetize': false,
       'indent': '2'
     });
-    var files = this.files;
+    var files = this.filesSrc;
     var done = this.async();
 
     if (!files.length) {
@@ -163,17 +163,17 @@ module.exports = function(grunt) {
 
       var command = 'sass-convert --from scss --to scss' + 
                     ' --indent ' + options.indent + 
-                    ' --in-place ' + file.src;
+                    ' --in-place ' + file;
 
-      grunt.log.writeln('prettifying: '.cyan + file.src);
+      grunt.log.writeln('prettifying: '.cyan + file);
 
       exec(command, function ( error, stdout, stderr ) {
         if ( error !== null ) {
-          grunt.log.error( file.src + ': ' + error );
+          grunt.log.error( file + ': ' + error );
           done( false );
         } else {
           if (options.alphabetize) {
-            alphabetize(file.src.toString(), done);
+            alphabetize(file.toString(), done);
           } else {
             if (filesComplete ===  filesLength - 1) {
               done( true );
