@@ -1,16 +1,15 @@
 @media screen {
-  // Base Rules
   @import "base/foo";
-  @import "base/bar";
-  // Layouts
-  // Section Modules
   @import "modules/foo";
+  @import "base/bar";
   @import "modules/bar";
 }
 
 .class-test {
   border-left: 1px solid black;
+  // Comment height
   height: 100%;
+  // Comment border-top
   border-top: 1px solid red;
   @include opacity(0);
   // Comment here.

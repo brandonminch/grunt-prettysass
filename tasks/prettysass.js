@@ -106,21 +106,21 @@ module.exports = function(grunt) {
           }
 
         });
-        _.each(selectors, function(selector) {
+        _.each(output, function(selector, i) {
           if (_.isArray(selector)) {
-            selectors[selector] = _.sortBy(selector, function (line) {
+            output[i] = _.sortBy(selector, function (line) {
               // If commented line, find property to sort by.
               if (/^\s*(\/)/.test(line)) {
-                var property = line.match(/^(?!\s*(\/))./gm);
+                var property = line.match(/^(?!\s*(\/)).*/gm);
                 if (property.length) {
                   return property[0];
                 } else {
                   return line;
                 }
+              } else {
+                return line;
               }
-              return line;
             });
-            selector.sort();
           }
         });
 

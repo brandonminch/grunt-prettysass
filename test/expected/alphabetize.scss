@@ -1,18 +1,16 @@
 @media screen {
-  // Base Rules
   @import "base/bar";
   @import "base/foo";
-  // Layouts
-  // Section Modules
   @import "modules/bar";
   @import "modules/foo";
 }
 
-
 .class-test {
   @include opacity(0);
   border-left: 1px solid black;
+  // Comment border-top
   border-top: 1px solid red;
+  // Comment height
   height: 100%;
   // Comment here.
   #nested-id {
