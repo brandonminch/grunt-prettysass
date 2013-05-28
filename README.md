@@ -37,12 +37,6 @@ grunt.initConfig({
 
 ### Options
 
-#### options.sassDir
-Type: `String`
-Default value: `''`
-
-Directory containing SASS files to prettify. All .scss files within the specified directory and its subdirectories will be prettified. Defaults to project's root directory.
-
 #### options.alphabetize
 Type: `Boolean`
 Default value: `false`
