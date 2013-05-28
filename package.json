@@ -1,7 +1,7 @@
 {
   "name": "grunt-prettysass",
   "description": "Prettify your SASS source files.",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "homepage": "https://github.com/brandonminch/grunt-prettysass",
   "author": {
     "name": "Brandon Minch",
