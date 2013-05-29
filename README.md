@@ -1,6 +1,6 @@
 # grunt-prettysass
 
-> Prettify your SASS source files.
+> Prettify and alphabetize your SASS source files.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
@@ -47,11 +47,24 @@ Sort SASS properties alphabetically.
 Type: `mixed`
 Default value: `2`
 
-How dmany spaces to use for each level of indentation. Defaults to 2. "t" means use hard tabs.
+How many spaces to use for each level of indentation. Defaults to 2. "t" means use hard tabs.
 
 ### Usage Examples
 
-TODO: Add usage examples.
+To run prettysass and alphabetize properties on all files in your scss directory. You can define source files individually in an array or use a globbing pattern as shown below:
+
+```js
+grunt.initConfig({
+  prettysass: {
+    options: {
+      alphabetize: true
+    },
+    app: {
+      src: ['scss/**/*.scss']
+    },
+  },
+})
+```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
