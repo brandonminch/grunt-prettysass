@@ -157,6 +157,10 @@ module.exports = function(grunt) {
     } else {
       filesLength = files.length;
     }
+    
+    // Reset files complete, in case this task is run more than once
+    // in the same Grunt instance.
+    filesComplete = 0;
 
     // Iterate over all specified file groups.
     files.forEach(function(file, i) {
