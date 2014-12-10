@@ -154,6 +154,7 @@ module.exports = function(grunt) {
 
     if (!files.length) {
       grunt.warn('No scss files were found in directory');
+      done(true);
     } else {
       filesLength = files.length;
     }
