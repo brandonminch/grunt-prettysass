@@ -154,9 +154,14 @@ module.exports = function(grunt) {
 
     if (!files.length) {
       grunt.warn('No scss files were found in directory');
+      done(true);
     } else {
       filesLength = files.length;
     }
+    
+    // Reset files complete, in case this task is run more than once
+    // in the same Grunt instance.
+    filesComplete = 0;
 
     // Iterate over all specified file groups.
     files.forEach(function(file, i) {
